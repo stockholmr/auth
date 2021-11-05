@@ -58,11 +58,13 @@ func (c *authController) Redirect(w http.ResponseWriter, r *http.Request, routeN
 func (c *authController) Login(w http.ResponseWriter, r *http.Request) {
 
 	data := struct {
-		Title string
-		Error string
+		Title  string
+		Error  string
+		Styles string
 	}{
-		Title: "Login | FPS Monitor",
-		Error: "",
+		Title:  "Login | FPS Monitor",
+		Error:  "",
+		Styles: c.Stylesheet(),
 	}
 
 	session := r.Context().Value(SessionKey).(*sessions.Session)

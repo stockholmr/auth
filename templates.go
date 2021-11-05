@@ -12,7 +12,8 @@ func page() *template.Template {
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
 				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 				<title><< .Title >></title>
-                <link rel="stylesheet" href="/bootstrap" type="text/css" />
+                <link rel="stylesheet" href="/bootstrap?ver=5.1.3" type="text/css" />
+                <style type="text/css"><< .Styles >></style>
 			</head>
 
 			<body>
