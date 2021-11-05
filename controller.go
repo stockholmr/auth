@@ -86,6 +86,7 @@ func (c *authController) Login(w http.ResponseWriter, r *http.Request) {
 
 		if bcrypt.CompareHashAndPassword([]byte(user.Password.String), []byte(password)) != nil {
 			data.Error = "Invalid Username or Password"
+			w.WriteHeader(400)
 			login().ExecuteTemplate(w, "page", data)
 			return
 		}

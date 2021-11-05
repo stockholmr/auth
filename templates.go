@@ -11,7 +11,7 @@ func page() *template.Template {
 				<meta language="english" />
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
 				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-				<title><<.title>></title>
+				<title><< .Title >></title>
                 <link rel="stylesheet" href="/bootstrap" type="text/css" />
 			</head>
 
@@ -48,6 +48,12 @@ func login() *template.Template {
 	tmpl := template.Must(page().New("content").Delims("<<", ">>").Parse(`
 	<div id="login">
         <form action="/login" method="POST">
+
+            << if (ne .Error "") >>
+                <div class="alert alert-danger" role="alert">
+                    << .Error >>
+                </div>
+            << end >>
 
             <div class="form-group">
                 <label class="sr-only" for="username">Username</label>
