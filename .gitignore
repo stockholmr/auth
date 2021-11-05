@@ -1,0 +1,5 @@
+*.log
+*.sqlite
+__debug_bin
+*.ini
+*.css

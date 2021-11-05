@@ -1,7 +1,6 @@
 package auth
 
 import (
-	"fpsmonitor/internal/logging"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -100,7 +99,7 @@ func (c *authController) Login(w http.ResponseWriter, r *http.Request) {
 
 		err = session.Save(r, w)
 		if err != nil {
-			logging.Warning("failed to save session")
+			c.log.Warn("failed to save session")
 		}
 
 		c.userRepo.Update(r.Context(), user)
@@ -116,7 +115,7 @@ func (c *authController) Login(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		user, err := c.userRepo.SelectWithUsername(r.Context(), username.(string))
+		_, err := c.userRepo.SelectWithUsername(r.Context(), username.(string))
 		if err != nil {
 			c.log.Debug("%s", err)
 			login().ExecuteTemplate(w, "page", data)
@@ -127,17 +126,19 @@ func (c *authController) Login(w http.ResponseWriter, r *http.Request) {
 			})*/
 		}
 
-		if !user.Active {
-			logging.Warning("user disabled")
-			templates.Login().ExecuteTemplate(w, "page", data)
+		/*if !user.Active {
+			c.log.Warn("user disabled")
+			login().ExecuteTemplate(w, "page", data)
 			return
+
 			/*log.Printf("[REQUEST] GET|login|Disabled Account Login Attempt|%s", username)
 			a.Templates.ExecuteTemplate(w, "error", &templates.Data{
 				"title":   "User Restricted",
 				"message": "Please contact IT Services",
-			})*/
+			})
+
 			// user is not active send to error page
-		}
+		}*/
 
 	} // end if GET
 
