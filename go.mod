@@ -1,4 +1,4 @@
-module auth
+module github.com/stockholmr/auth
 
 go 1.17
 
@@ -19,5 +19,3 @@ require (
 	github.com/ziutek/mymysql v1.5.4 // indirect
 	gopkg.in/gorp.v1 v1.7.2 // indirect
 )
-
-replace auth => ./
