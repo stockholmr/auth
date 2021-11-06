@@ -161,7 +161,7 @@ func (c *authController) Logout(w http.ResponseWriter, r *http.Request) {
 
 func (c *authController) Register(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
-
+		_ = ""
 	}
 
 	register().ExecuteTemplate(w, "page", nil)
