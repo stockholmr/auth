@@ -9,8 +9,8 @@ type Event struct {
 	Priority int
 }
 
-func NewEvent(listener func(e Event), priority int) *Event {
-	return &Event{
+func NewEvent(listener func(e Event), priority int) Event {
+	return Event{
 		ID:       uuid.NewString(),
 		Listener: listener,
 		Priority: priority,
