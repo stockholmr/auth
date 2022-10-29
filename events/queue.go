@@ -36,14 +36,26 @@ func (Q *Queue) Add(e Event) error {
 	return nil
 }
 
-func (Q *Queue) Remove(e Event) {
+func (Q *Queue) Remove(e *Event) {
 	for _, evt := range Q.events {
 		if strings.Compare(evt.ID, e.ID) == 0 {
-			delete(Q.events, e.ID)
+			ID := evt.ID
+			evt.Dispose()
+			delete(Q.events, ID)
 			priorityIndex := slices.IndexFunc(Q.priorityIndex, func(id string) bool { return id == e.ID })
 			Q.priorityIndex[priorityIndex] = ""
 		}
 	}
+}
+
+func (Q *Queue) Dispose() {
+	for _, evt := range Q.events {
+		ID := evt.ID
+		evt.Dispose()
+		delete(Q.events, ID)
+	}
+	Q.priorityIndex = nil
+	Q.events = nil
 }
 
 func (Q *Queue) IterateFunc(f func(e *Event)) {
