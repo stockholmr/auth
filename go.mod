@@ -1,4 +1,4 @@
-module auth
+module github.com/stockholmr/auth
 
 go 1.19
 
