@@ -48,7 +48,9 @@ func (Q *Queue) Remove(e Event) {
 
 func (Q *Queue) IterateFunc(f func(e *Event)) {
 	for _, ID := range Q.priorityIndex {
-		event := Q.events[ID]
-		f(&event)
+		if ID != "" {
+			event := Q.events[ID]
+			f(&event)
+		}
 	}
 }

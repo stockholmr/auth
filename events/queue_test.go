@@ -42,7 +42,7 @@ func TestRemove(t *testing.T) {
 		t.FailNow()
 	}
 
-	if Q.priorityIndex[2] != "" {
+	if Q.priorityIndex[0] != "" {
 		t.FailNow()
 	}
 }
