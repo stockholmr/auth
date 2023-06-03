@@ -220,6 +220,9 @@ func ResetPasswordWithConfirmation(db *sqlx.DB, email string, confirmEmail Selec
 
 	user, err := dbGetUserByEmail(db, email)
 	if err != nil {
+		if err.Error() == "sql: no rows in result set" {
+			return errors.New(ERROR_INVALIDEMAIL)
+		}
 		return err
 	}
 
