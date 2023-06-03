@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/jmoiron/sqlx"
-	"server/internal/database"
+	"github.com/stockholmr/database"
 )
 
 type User struct {

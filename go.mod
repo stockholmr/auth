@@ -7,3 +7,5 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.17
 	golang.org/x/crypto v0.9.0
 )
+
+require github.com/stockholmr/database v0.0.0-20230603143156-d7adc77fc943 // indirect

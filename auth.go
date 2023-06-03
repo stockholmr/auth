@@ -3,7 +3,7 @@ package auth
 import (
 	"errors"
 	"github.com/jmoiron/sqlx"
-	"server/internal/database"
+	"github.com/stockholmr/database"
 	"time"
 )
 
