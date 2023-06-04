@@ -15,6 +15,7 @@ const (
 	ERROR_SENDCONFIRM      string = "failed to send confirmation email"
 	ERROR_SETCOOKIE        string = "failed to set remember cookie"
 	ERROR_NODATABASECONN   string = "no database connection"
+	ERROR_INVALIDUSERID    string = "invalid user id"
 )
 
 const (

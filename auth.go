@@ -86,6 +86,9 @@ func ConfirmEmail(db *sqlx.DB, selector string, token string) error {
 
 	user, err := dbGetUserByID(db, confirm.UserID.Int64)
 	if err != nil {
+		if err.Error() == "sql: no rows in result set" {
+			return errors.New(ERROR_INVALIDUSERID)
+		}
 		return err
 	}
 
@@ -330,6 +333,9 @@ func ResetPasswordWithID(db *sqlx.DB, userID int64, password string) error {
 
 	user, err := dbGetUserByID(db, userID)
 	if err != nil {
+		if err.Error() == "sql: no rows in result set" {
+			return errors.New(ERROR_INVALIDUSERID)
+		}
 		return err
 	}
 
