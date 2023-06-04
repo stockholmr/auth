@@ -278,7 +278,7 @@ func ConfirmReset(db *sqlx.DB, selector string, token string) (int64, error) {
 		return -999, errors.New(ERROR_TOKENEXPIRED)
 	}
 
-	return reset.ID.Int64, nil
+	return reset.UserID.Int64, nil
 }
 func DeleteReset(db *sqlx.DB, selector string) error {
 	if err := checkDatabase(db); err != nil {
